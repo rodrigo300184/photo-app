@@ -1,13 +1,68 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: #718ca1;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+nav {
+  color: #256d85;
+  font-size: 20px;
+  margin: 0 auto;
+  width: 80%;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+.NavBar {
+  color: aliceblue;
+  text-decoration: none;
+  padding: 10px;
+  color: #354d62;
+  text-align: center;
+
+  /* text/button */
+  font-family: Roboto;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 36px; /* 257.143% */
+  letter-spacing: 1.25px;
+  text-transform: uppercase;
+}
+.NavBar.active {
+  color: #d7f2f7;
+  text-decoration: none;
+  padding: 10px;
+}
+.NavBar:hover {
+  color: #8fe3cf;
+}
+
+.icon-button {
+  font-size: 1rem;
+}
+
+ul {
+  grid-template-columns: repeat(1, 1fr) !important;
+}
+
+@media (min-width: 600px) {
+  ul {
+    /*two collumns between 600 and 1000px*/
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+@media (min-width: 1000px) {
+  ul {
+    /*four collumns between 600 and 1000px*/
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
 }
