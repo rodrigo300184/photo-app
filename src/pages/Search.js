@@ -1,8 +1,12 @@
 import { Box, ImageList, Paper, IconButton, InputBase } from "@mui/material";
-import Pagination from '@mui/material/Pagination';
+import Pagination from "@mui/material/Pagination";
 import Photo from "../components/photo";
 import SearchIcon from "@mui/icons-material/Search";
-import { getPhotos, getTotalPages } from "../features/search/searchSlice";
+import {
+  getPhotos,
+  getPhotosStatus,
+  getTotalPages,
+} from "../features/search/searchSlice";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPhotos } from "../features/search/searchThunk";
@@ -10,22 +14,41 @@ import { fetchPhotos } from "../features/search/searchThunk";
 export default function Search() {
   const [query, setQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
+  const [photos, setPhotos] = useState([]);
+  const photosStatus = useSelector(getPhotosStatus);
   const dispatch = useDispatch();
-  const photos = useSelector(getPhotos);
+  const results = useSelector(getPhotos);
   let totalPages = useSelector(getTotalPages);
 
-  const handlePageChange = (e,value) => {
+  const handlePageChange = (e, value) => {
     setCurrentPage(value);
-    dispatch(fetchPhotos({ query: query, currentPage: currentPage }));
+    dispatch(fetchPhotos({ query: query, currentPage: value }));
   };
   const handleWhileSearching = (e) => {
     setCurrentPage(1);
     setQuery(e.target.value);
   };
+
   useEffect(() => {
-    dispatch(fetchPhotos({ query: query, currentPage: 1 }));
-  }, [query, dispatch]);
-  
+    if (photosStatus === "idle") {
+      dispatch(fetchPhotos({ query: query, currentPage: currentPage }));
+    } else if (photosStatus === "pending") {
+      console.log("pending");
+    } else if (photosStatus === "fulfilled") {
+      let data = [];
+      results.map((photo, id) => data.push(<Photo key={id} item={photo} />));
+      setPhotos(data);
+    } else {
+      console.log("error");
+    }
+  }, [dispatch, photosStatus, results, query, currentPage,]);
+
+  useEffect(() => {
+    if (query !== "") {
+      dispatch(fetchPhotos({ query: query, currentPage: 1 }));
+    } 
+  },[dispatch,query])
+
   return (
     <>
       <Box sx={{ display: "flex", justifyContent: "center" }}>
@@ -51,19 +74,18 @@ export default function Search() {
           </IconButton>
         </Paper>
       </Box>
-      <ImageList sx={{ margin: "0 auto", width: "85%" }} gap={25}>
-        {photos&&
-          photos.length&&photos.map((item, id) => (
-          <Photo key={id} item={item} />
-        ))}
+      <ImageList sx={{ margin: "0 auto", width: "80%" }} gap={25}>
+        {photos}
       </ImageList>
-      
-        <Pagination count={totalPages} variant="outlined" shape="rounded" sx={{display:'flex', justifyContent:'center'}} 
+
+      <Pagination
+        count={totalPages}
+        variant="outlined"
+        shape="rounded"
+        sx={{ display: "flex", justifyContent: "center" }}
         page={currentPage}
         onChange={(e, value) => handlePageChange(e, value)}
-        
-        />
-      
+      />
     </>
   );
 }

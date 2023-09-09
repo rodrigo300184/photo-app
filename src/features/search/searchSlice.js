@@ -22,6 +22,7 @@ const searchSlice = createSlice({
       state.totalPages = action.payload.totalPages;
     })
     .addCase(fetchPhotos.rejected, (state, action) => {
+      state.status = 'rejected';
       state.error = action.error.message;
     })
   }
@@ -29,5 +30,6 @@ const searchSlice = createSlice({
 
 
 export default searchSlice.reducer;
+export const getPhotosStatus = (state) => state.photos.status;
 export const getPhotos = (state) => state.photos.results;
 export const getTotalPages = (state) => state.photos.totalPages;
