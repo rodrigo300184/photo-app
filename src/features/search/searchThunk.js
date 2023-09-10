@@ -3,7 +3,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 export const fetchPhotos = createAsyncThunk(
   "search/fetchPhotos",
   async ({query, currentPage}) => {
-    const accesKey = 'FIHcXjCkWC4LnabnTr50F364OJqw9Tp6JonBdlcowvc'; //process.env.UNSPLASH_API_KEY;
+    const accesKey = process.env.REACT_APP_UNSPLASH_API_KEY;
     const baseURL = 'https://api.unsplash.com/';
     const photosPerPage = 16;
     if (query) {

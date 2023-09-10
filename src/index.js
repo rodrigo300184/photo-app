@@ -7,7 +7,8 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from "./app/store";
 import NavBar from './components/NavBar';
-import Search from './pages/Search';
+import Search from './pages/search';
+import Favorites from './pages/favorites';
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -18,7 +19,7 @@ root.render(
         <Routes>
           <Route path="/" element={<App />} />
           <Route path="/search" element={<Search />} />
-          <Route path="/favorites" element={<App />} />
+          <Route path="/favorites" element={<Favorites />} />
         </Routes>
       </BrowserRouter>
     </Provider>
