@@ -13,7 +13,8 @@ const searchSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) =>{
-    builder.addCase(fetchPhotos.pending, (state, action) => {
+    builder
+    .addCase(fetchPhotos.pending, (state, action) => {
       state.status = "pending";
     })
     .addCase(fetchPhotos.fulfilled, (state, action) => {

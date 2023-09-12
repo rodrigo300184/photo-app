@@ -64,7 +64,7 @@ function ChildModal(props) {
 
 export default function NestedModal(props) {
   const [open, setOpen] = React.useState(props.open);
-  const [newDescription, setNewDescription] = React.useState("");
+  const [newDescription, setNewDescription] = React.useState(props.photo.description);
   const handleClose = () => {
     setOpen(false);
   };
@@ -82,7 +82,7 @@ export default function NestedModal(props) {
         <Box sx={{ ...style, width: 400 }}>
           <h2 id="parent-modal-title">Information:</h2>
           <p id="parent-modal-description">
-            <b>Description:</b> {props.photo.description}
+            <b>Description:</b> {newDescription}
           </p>
           <Box display="flex" justifyContent="center">
             <ChildModal

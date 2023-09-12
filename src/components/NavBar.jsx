@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink} from "react-router-dom";
 import { getFavLength } from "../features/favorites/favoritesSlice";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
@@ -9,6 +9,9 @@ export default function NavBar(){
     useEffect(() =>{
         setFavPhotosQty(favPhotosLength);
     },[favPhotosLength]);
+    useEffect(() =>{
+        ;
+    },[]);
     return(
         <nav>
         <NavLink className={({ isActive }) => (isActive ? 'NavBar active' : 'NavBar')} to='/'>Home</NavLink> | 
