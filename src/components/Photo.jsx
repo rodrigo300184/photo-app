@@ -39,7 +39,7 @@ export default function Photo(props) {
   };
 
   const handleInfo = () => {
-    setModal(<Modal photo={props.item} open={true}/>);
+    setModal(<Modal photo={props.item} open={true} />);
   };
 
   return (
@@ -51,7 +51,7 @@ export default function Photo(props) {
         id={props.item.id}
       />
       <ImageListItemBar
-        sx={{ overflow: "visible"}}
+        sx={{ overflow: "visible" }}
         title={
           props.item.description !== null
             ? props.item.description
@@ -70,7 +70,7 @@ export default function Photo(props) {
           >
             <DownloadIcon
               sx={{
-                cursor: 'pointer',
+                cursor: "pointer",
                 paddingTop: "2px",
                 fontSize: "1.55rem",
                 marginRight: "3px",
@@ -80,13 +80,16 @@ export default function Photo(props) {
             {props.fav ? (
               <>
                 {modal}
-             <InfoIcon sx={{cursor: 'pointer' }} onClick={handleInfo} />
+                <InfoIcon sx={{ cursor: "pointer" }} onClick={handleInfo} />
 
-                <DeleteOutlineIcon sx={{cursor: 'pointer' }} onClick={removefavorite} />
+                <DeleteOutlineIcon
+                  sx={{ cursor: "pointer" }}
+                  onClick={removefavorite}
+                />
               </>
             ) : (
               <FavoriteIcon
-                sx={{cursor: 'pointer', color: favIcon ? "red" : "" }}
+                sx={{ cursor: "pointer", color: favIcon ? "red" : "" }}
                 onClick={handlefavorite}
               />
             )}

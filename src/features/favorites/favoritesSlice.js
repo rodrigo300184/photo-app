@@ -1,8 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+
 const initialState = {
   favorites: JSON.parse(localStorage.getItem("localFavs")) || [],
-  length: JSON.parse(localStorage.getItem("localFavs")).length || 0,
+  length: localStorage.getItem("localFavs")&&(JSON.parse(localStorage.getItem("localFavs")).length || 0),
   status: "idle",
   error: null,
 };
