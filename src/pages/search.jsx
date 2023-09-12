@@ -49,8 +49,8 @@ export default function Search() {
   }, [dispatch, query]);
 
   return (
-    <>
-      <Box sx={{ display: "flex", justifyContent: "center" }}>
+    <><Box sx={{ display: "flex", justifyContent: "center" }}>
+      <Box className="search-bar" sx={{ display: "flex", justifyContent: "center" }}>
         <Paper
           component="form"
           sx={{
@@ -67,11 +67,13 @@ export default function Search() {
             placeholder="Search your photos"
             inputProps={{ "aria-label": "Search your photos" }}
             onChange={handleWhileSearching}
+            autoComplete="on"
           />
           <IconButton type="button" sx={{ p: "10px" }} aria-label="search">
             <SearchIcon />
           </IconButton>
         </Paper>
+      </Box>
       </Box>
       <ImageList sx={{ margin: "0 auto", width: "80%" }} gap={25}>
         {photos}
@@ -81,7 +83,7 @@ export default function Search() {
         count={totalPages}
         variant="outlined"
         shape="rounded"
-        sx={{ display: "flex", justifyContent: "center" }}
+        sx={{ display: "flex", justifyContent: "center" , marginBottom:'50px'}}
         page={currentPage}
         onChange={(e, value) => handlePageChange(value)}
       />

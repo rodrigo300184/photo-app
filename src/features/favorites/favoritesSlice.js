@@ -34,13 +34,27 @@ const favoriteSlice = createSlice({
         state.length -= 1;
       }
     },
-    editDescription: (state, action) => {},
+    editDescription: (state, action) => {
+      console.log(action);
+        const copyOfFavorites = [...state.favorites];
+        const indexForEditing = copyOfFavorites.findIndex(
+                  (photo) => photo.id === action.payload.id
+                 );
+        const newPhoto = {
+                ...copyOfFavorites[indexForEditing],
+                description: action.payload.newDescription,
+        };  
+        copyOfFavorites[indexForEditing] = newPhoto;
+        state.favorites = copyOfFavorites;
+        localStorage.setItem("localFavs", JSON.stringify(state.favorites));
+      
+    },
   },
   extraReducers: {},
 });
 
 export default favoriteSlice.reducer;
-export const { addPhoto, removePhoto } = favoriteSlice.actions;
+export const { addPhoto, removePhoto, editDescription } = favoriteSlice.actions;
 export const getFavPhotosStatus = (state) => state.favoritePhotos.status;
 export const getFavPhotos = (state) => state.favoritePhotos.favorites;
 export const getFavLength = (state) => state.favoritePhotos.length;

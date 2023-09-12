@@ -9,6 +9,7 @@ import { store } from "./app/store";
 import NavBar from './components/NavBar';
 import Search from './pages/search';
 import Favorites from './pages/favorites';
+import Footer from "./components/footer/Footer";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -21,6 +22,7 @@ root.render(
           <Route path="/search" element={<Search />} />
           <Route path="/favorites" element={<Favorites />} />
         </Routes>
+        <Footer/>
       </BrowserRouter>
     </Provider>
  // </React.StrictMode>

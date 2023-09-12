@@ -62,8 +62,8 @@
 
 .image-1{
   position: relative;
-  top: -50px;
-  width: 300px;
+  bottom: 110px;
+  width: 250px;
   height: auto;
   transform: rotate(-25deg);
   border-radius: 48px;
@@ -71,13 +71,13 @@
 }
 .image-2{
   position: relative;
-  top: -50px;
-  width: 300px;
+  bottom: 110px;
+  width: 250px;
   height: auto;
   transform: rotate(25deg);
   border-radius: 48px;
 }
-@media (max-width: 1150px) {
+@media (max-width: 1300px) {
   .title {
     font-size: 30px;
   }
@@ -104,15 +104,18 @@
   }
   .image-container{
     width: 100%;
+    
   }
  .image-1{
   width: 200px;
+  bottom: 30px;
  }
  .image-2{
   width: 200px;
+  bottom: 30px;
  }
 }
-@media (max-width: 400px) {
+@media (max-width: 700px) {
   .main-title{
     font-size: 40px;
   }

@@ -14,7 +14,6 @@ code {
 }
 nav {
   color: #256d85;
-  font-size: 20px;
   margin: 0 auto;
   width: 80%;
   margin-top: 15px;
@@ -24,7 +23,7 @@ nav {
 .NavBar {
   color: aliceblue;
   text-decoration: none;
-  padding: 10px;
+  padding: 5px;
   color: #354d62;
   text-align: center;
 
@@ -53,16 +52,45 @@ nav {
 ul {
   grid-template-columns: repeat(1, 1fr) !important;
 }
+.search-bar {
+  width: 80%;
+}
+.MuiImageListItemBar-subtitle.css-hk6gwf-MuiImageListItemBar-subtitle{
+  line-height: 1.2;
+}
+.order-by {
+  justify-content: center;
+  display: flex;
+  margin: 25px 0px 25px 0px;
+  width: 100%;
+}
+.MuiFormControl-root.css-kfvvmi-MuiFormControl-root {
+  margin-left: 0;
+}
+
 
 @media (min-width: 600px) {
   ul {
     /*two collumns between 600 and 1000px*/
     grid-template-columns: repeat(2, 1fr) !important;
   }
+  .NavBar {
+    
+    padding: 12px;
+  }
 }
 @media (min-width: 1000px) {
   ul {
     /*four collumns between 600 and 1000px*/
     grid-template-columns: repeat(4, 1fr) !important;
+  }
+  .search-bar {
+    width: 600px;
+  }
+  .order-by {
+    justify-content: right;
+    display: flex;
+    margin: 0 0 25px 0;
+    width: 90%;
   }
 }
