@@ -62,7 +62,7 @@ function ChildModal(props) {
   );
 }
 
-export default function NestedModal(props) {
+export const NestedModal = (props) => {
   const [open, setOpen] = React.useState(props.open);
   const [newDescription, setNewDescription] = React.useState(props.photo.description);
   const handleClose = () => {

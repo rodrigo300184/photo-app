@@ -3,7 +3,7 @@ import { getFavLength } from "../features/favorites/favoritesSlice";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 
-export default function NavBar(){
+export const NavBar = ()=>{
     const favPhotosLength = useSelector(getFavLength);
     const [favPhotosQty,setFavPhotosQty] = useState(favPhotosLength);
     useEffect(() =>{

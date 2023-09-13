@@ -1,7 +1,7 @@
 import { Box } from "@mui/material";
 import './noResult.css';
 
-export default function NoResults() {
+export  const NoResults = ()=> {
   return (
    <>
         <div className="no-result-image"></div>

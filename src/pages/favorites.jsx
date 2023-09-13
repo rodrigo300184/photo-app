@@ -1,11 +1,11 @@
 import { Box, ImageList, InputBase, Paper, IconButton } from "@mui/material";
 import { useSelector } from "react-redux";
 import { getFavPhotos } from "../features/favorites/favoritesSlice";
-import Photo from "../components/Photo";
-import OrderBy from "../components/OrderBy";
+import {Photo} from "../components/Photo";
+import {OrderBy} from "../components/OrderBy";
 import { useEffect, useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
-import NoResults from "../components/NoResults";
+import {NoResults} from "../components/NoResults";
 
 export default function Favorites() {
   const favPhotos = useSelector(getFavPhotos);
@@ -82,8 +82,8 @@ export default function Favorites() {
     <OrderBy orderBy={orderBy} setOrderBy={setOrderBy}/>
   </Box>
   <ImageList sx={{ margin: "0px auto 50px", width: "80%" }} gap={25}>
-    {photos.map((photo, id) => (
-      <Photo key={id} item={photo} fav={true} />
+    {photos.map((photo) => (
+      <Photo key={photo.id} item={photo} fav={true} />
     ))}
   </ImageList>
 </>)}

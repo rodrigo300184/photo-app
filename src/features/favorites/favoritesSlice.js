@@ -3,7 +3,6 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   favorites: JSON.parse(localStorage.getItem("localFavs")) || [],
-  length: localStorage.getItem("localFavs")&&(JSON.parse(localStorage.getItem("localFavs")).length || 0),
   status: "idle",
   error: null,
 };
@@ -52,4 +51,4 @@ export default favoriteSlice.reducer;
 export const { addPhoto, removePhoto, editDescription } = favoriteSlice.actions;
 export const getFavPhotosStatus = (state) => state.favoritePhotos.status;
 export const getFavPhotos = (state) => state.favoritePhotos.favorites;
-export const getFavLength = (state) => state.favoritePhotos.length;
+export const getFavLength = (state) => state.favoritePhotos.favorites.length;

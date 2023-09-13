@@ -1,6 +1,6 @@
 import { Box, ImageList, Paper, IconButton, InputBase } from "@mui/material";
 import Pagination from "@mui/material/Pagination";
-import Photo from "../components/Photo";
+import {Photo} from "../components/Photo";
 import SearchIcon from "@mui/icons-material/Search";
 import {
   getPhotos,
@@ -29,13 +29,14 @@ export default function Search() {
     setQuery(e.target.value);
   };
   useEffect(() => {
-    if (photosStatus === "idle") {
+    if (photosStatus === "idle" ) {
       dispatch(fetchPhotos({ query: query, currentPage: currentPage }));
     } else if (photosStatus === "pending") {
       console.log("pending");
     } else if (photosStatus === "fulfilled") {
+      console.log('fulfilled');
       let data = [];
-      results.map((photo, id) => data.push(<Photo key={id} item={photo} fav={false} />));
+      results.map((photo) => data.push(<Photo key={photo.id} item={photo} fav={false} />));
       setPhotos(data);
     } else {
       console.log("error");

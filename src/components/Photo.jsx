@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import ImageListItem from "@mui/material/ImageListItem";
 import ImageListItemBar from "@mui/material/ImageListItemBar";
 import Box from "@mui/material/Box";
@@ -8,14 +8,14 @@ import { addPhoto, removePhoto } from "../features/favorites/favoritesSlice";
 import { useDispatch } from "react-redux";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import InfoIcon from "@mui/icons-material/Info";
-import Modal from "./Modal";
+import {NestedModal} from "./Modal";
 
-export default function Photo(props) {
+export const Photo = (props) => {
   const dispatch = useDispatch();
   const [favIcon, setFavIcon] = useState();
   const [modal, setModal] = useState();
 
-//useEffect(() => );
+
 
   const download = () => {
     const aTag = document.createElement("a");
@@ -41,7 +41,7 @@ export default function Photo(props) {
   };
 
   const handleInfo = () => {
-    setModal(<Modal photo={props.item} open={true} />);
+    setModal(<NestedModal photo={props.item} open={true} />);
   };
 
   return (

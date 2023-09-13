@@ -4,7 +4,7 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import { Link, Typography, Stack } from '@mui/material';
 import {FaLinkedin} from 'react-icons/fa';
 
-export default function Footer(){
+export const Footer = ()=>{
     
   return (
     <>
