@@ -5,6 +5,7 @@ import Photo from "../components/Photo";
 import OrderBy from "../components/OrderBy";
 import { useEffect, useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
+import NoResults from "../components/NoResults";
 
 export default function Favorites() {
   const favPhotos = useSelector(getFavPhotos);
@@ -49,43 +50,43 @@ export default function Favorites() {
 
 
   return (
-    <>
-      <Box sx={{ display: "flex", justifyContent: "center" }}>
-        <Box
-          className="search-bar"
-          sx={{ display: "flex", justifyContent: "center" }}
-        >
-          <Paper
-            component="form"
-            sx={{
-              borderRadius: "30px",
-              p: "2px 4px",
-              display: "flex",
-              alignItems: "center",
-              width: "100%",
-            }}
-          >
-            <InputBase
-              sx={{ ml: 1, flex: 1 }}
-              placeholder="Search your photos"
-              inputProps={{ "aria-label": "Search your photos" }}
-              onChange={handleWhileSearching}
-              autoComplete="on"
-            />
-            <IconButton type="button" sx={{ p: "10px" }} aria-label="search">
-              <SearchIcon />
-            </IconButton>
-          </Paper>
-        </Box>
-      </Box>
-      <Box className="order-by">
-        <OrderBy orderBy={orderBy} setOrderBy={setOrderBy}/>
-      </Box>
-      <ImageList sx={{ margin: "0px auto 50px", width: "80%" }} gap={25}>
-        {photos.map((photo, id) => (
-          <Photo key={id} item={photo} fav={true} />
-        ))}
-      </ImageList>
+    <> {photos.length===0 ? (<NoResults />): ( <> <Box sx={{ display: "flex", justifyContent: "center" }}>
+    <Box
+      className="search-bar"
+      sx={{ display: "flex", justifyContent: "center" }}
+    >
+      <Paper
+        component="form"
+        sx={{
+          borderRadius: "30px",
+          p: "2px 4px",
+          display: "flex",
+          alignItems: "center",
+          width: "100%",
+        }}
+      >
+        <InputBase
+          sx={{ ml: 1, flex: 1 }}
+          placeholder="Search your photos"
+          inputProps={{ "aria-label": "Search your photos" }}
+          onChange={handleWhileSearching}
+          autoComplete="on"
+        />
+        <IconButton type="button" sx={{ p: "10px" }} aria-label="search">
+          <SearchIcon />
+        </IconButton>
+      </Paper>
+    </Box>
+  </Box>
+  <Box className="order-by">
+    <OrderBy orderBy={orderBy} setOrderBy={setOrderBy}/>
+  </Box>
+  <ImageList sx={{ margin: "0px auto 50px", width: "80%" }} gap={25}>
+    {photos.map((photo, id) => (
+      <Photo key={id} item={photo} fav={true} />
+    ))}
+  </ImageList>
+</>)}
     </>
   );
 }

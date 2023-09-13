@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import "./App.css";
-import cameraI from './CameraI.jpg';
-import cameraII from './CameraIII.jpg';
+import cameraI from './assets/CameraI.jpg';
+import cameraII from './assets/CameraII.jpg';
 function App() {
   return (
     <div className="App">

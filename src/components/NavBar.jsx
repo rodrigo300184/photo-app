@@ -9,9 +9,7 @@ export default function NavBar(){
     useEffect(() =>{
         setFavPhotosQty(favPhotosLength);
     },[favPhotosLength]);
-    useEffect(() =>{
-        ;
-    },[]);
+
     return(
         <nav>
         <NavLink className={({ isActive }) => (isActive ? 'NavBar active' : 'NavBar')} to='/'>Home</NavLink> | 

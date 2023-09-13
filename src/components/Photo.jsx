@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ImageListItem from "@mui/material/ImageListItem";
 import ImageListItemBar from "@mui/material/ImageListItemBar";
 import Box from "@mui/material/Box";
@@ -14,6 +14,8 @@ export default function Photo(props) {
   const dispatch = useDispatch();
   const [favIcon, setFavIcon] = useState();
   const [modal, setModal] = useState();
+
+//useEffect(() => );
 
   const download = () => {
     const aTag = document.createElement("a");

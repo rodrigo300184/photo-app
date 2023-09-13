@@ -13,14 +13,8 @@ const favoriteSlice = createSlice({
   initialState,
   reducers: {
     addPhoto: (state, action) => {
-      let repeated;
-      state.favorites.forEach((photo) => {
-        if(photo.id === action.payload.id){
-          repeated = true;
-          return
-        } }
-      );
-      if (!repeated && state.favorites.length <= 50) {
+      const repeated = state.favorites.some((photo) => photo.id === action.payload.id);
+      if (!repeated && state.favorites.length <= 30) {
         state.favorites.push(action.payload);
         localStorage.setItem("localFavs", JSON.stringify(state.favorites));
         state.length += 1;

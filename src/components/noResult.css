@@ -1,0 +1,12 @@
+.no-result-image{
+    background-image: url('../assets/No-result.png');
+    background-size: cover;
+    width: 450px;
+    height: 550px;
+    margin: 0 auto;
+}
+
+.thanks-to{
+    font-size: 10px;
+    margin-bottom: 70px;
+}

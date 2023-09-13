@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, {useEffect} from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Button from "@mui/material/Button";
@@ -34,7 +34,7 @@ function ChildModal(props) {
   };
 
   return (
-    <React.Fragment>
+    <>
       <Button variant="outlined" onClick={handleOpen}>
         Edit description
       </Button>
@@ -44,12 +44,12 @@ function ChildModal(props) {
         aria-labelledby="child-modal-title"
         aria-describedby="child-modal-description"
       >
-        <Box sx={{ ...style, width: 250 }}>
+        <Box sx={{ ...style, width: 230 }}>
           <h2 id="child-modal-title">Description:</h2>
           <TextareaAutosize
             aria-label="minimum height"
             minRows={7}
-            style={{ width: 250 }}
+            style={{ width: 210 }}
             value={props.newDescription}
             onChange={(e) => props.setNewDescription(e.target.value)}
           ></TextareaAutosize>
@@ -58,7 +58,7 @@ function ChildModal(props) {
           </Button>
         </Box>
       </Modal>
-    </React.Fragment>
+    </>
   );
 }
 
@@ -69,7 +69,7 @@ export default function NestedModal(props) {
     setOpen(false);
   };
 
-  React.useEffect(() => setNewDescription(props.photo.description),[props.photo.description]);
+  useEffect(() => setNewDescription(props.photo.description),[props.photo.description]);
 
   return (
     <div>
@@ -79,7 +79,7 @@ export default function NestedModal(props) {
         aria-labelledby="parent-modal-title"
         aria-describedby="parent-modal-description"
       >
-        <Box sx={{ ...style, width: 400 }}>
+        <Box sx={{ ...style, width: 250 }}>
           <h2 id="parent-modal-title">Information:</h2>
           <p id="parent-modal-description">
             <b>Description:</b> {newDescription}
