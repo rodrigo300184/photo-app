@@ -1,7 +1,8 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Button from "@mui/material/Button";
+import InfoIcon from "@mui/icons-material/Info";
 import { useDispatch } from "react-redux";
 import { editDescription } from "../features/favorites/favoritesSlice";
 import { TextareaAutosize } from "@mui/material";
@@ -23,17 +24,18 @@ const style = {
 function ChildModal(props) {
   const dispatch = useDispatch();
   const newDescription = props.newDescription;
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
     setOpen(true);
   };
+
   const handleSave = () => {
     dispatch(editDescription({ id: props.props.photo.id, newDescription }));
     setOpen(false);
   };
 
   return (
-    <>
+    <React.Fragment>
       <Button variant="outlined" onClick={handleOpen}>
         Edit description
       </Button>
@@ -57,22 +59,28 @@ function ChildModal(props) {
           </Button>
         </Box>
       </Modal>
-    </>
+    </React.Fragment>
   );
 }
 
-export const NestedModal = (props) => {
-  const [open, setOpen] = useState(props.open);
+export default function NestedModal(props) {
   const [newDescription, setNewDescription] = useState(props.photo.description);
- 
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => {
+    setOpen(true);
+  };
   const handleClose = () => {
     setOpen(false);
   };
 
-  useEffect(() => setNewDescription(props.photo.description),[props.photo.description]);
+  useEffect(
+    () => setNewDescription(props.photo.description),
+    [props.photo.description]
+  );
 
   return (
     <div>
+      <Button onClick={handleOpen}>{<InfoIcon />}</Button>
       <Modal
         open={open}
         onClose={handleClose}

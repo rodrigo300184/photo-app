@@ -29,7 +29,6 @@ const favoriteSlice = createSlice({
       }
     },
     editDescription: (state, action) => {
-      console.log(action);
         const copyOfFavorites = [...state.favorites];
         const indexForEditing = copyOfFavorites.findIndex(
                   (photo) => photo.id === action.payload.id

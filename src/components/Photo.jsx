@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import ImageListItem from "@mui/material/ImageListItem";
 import ImageListItemBar from "@mui/material/ImageListItemBar";
 import Box from "@mui/material/Box";
@@ -7,23 +7,16 @@ import DownloadIcon from "@mui/icons-material/Download";
 import { addPhoto, removePhoto } from "../features/favorites/favoritesSlice";
 import { useDispatch } from "react-redux";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
-import InfoIcon from "@mui/icons-material/Info";
-import {NestedModal} from "./Modal";
+import { saveAs } from "file-saver";
+import NestedModal from "./NestedModal";
 
 export const Photo = (props) => {
   const dispatch = useDispatch();
-  const [modal, setModal] = useState();
-  const [open, setOpen] = useState(true);
-
-
+ 
   const download = () => {
-    const aTag = document.createElement("a");
-    aTag.href = props.item.urls.full;
-    const filename = props.item.slug + ".jpg";
-    aTag.setAttribute("download", filename);
-    document.body.appendChild(aTag);
-    aTag.click();
-    aTag.remove();
+    const url = props.item.urls.regular;
+    const fileName = props.item.description;
+    fetch(url).then((response) => response.blob()).then((blob)=> saveAs(blob,fileName)).catch((error)=> console.log(error)); 
   };
 
   const handlefavorite = () => {
@@ -36,12 +29,7 @@ export const Photo = (props) => {
   const removefavorite = () => {
     dispatch(removePhoto(props.item));
   };
-
-  const handleInfo = () => {
-    setModal(<NestedModal photo={props.item} open={open} />);
-  };
-
-
+ 
   return (
     <ImageListItem key={props.item.id}>
       <img
@@ -79,9 +67,7 @@ export const Photo = (props) => {
             />
             {props.fav ? (
               <>
-                {modal}
-                <InfoIcon sx={{ cursor: "pointer" }} onClick={handleInfo} />
-
+                <NestedModal photo={props.item} /> 
                 <DeleteOutlineIcon
                   sx={{ cursor: "pointer" }}
                   onClick={removefavorite}
