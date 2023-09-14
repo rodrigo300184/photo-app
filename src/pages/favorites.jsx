@@ -76,6 +76,8 @@ export default function Favorites() {
               placeholder="Search your photos"
               inputProps={{ "aria-label": "Search your photos" }}
               onChange={handleWhileSearching}
+              onKeyDown={(e) =>  {if (e.key === "Enter") {
+                e.preventDefault();}}}
               autoComplete="on"
             />
             <IconButton type="button" sx={{ p: "10px" }} aria-label="search">
