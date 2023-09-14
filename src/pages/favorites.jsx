@@ -50,7 +50,7 @@ export default function Favorites() {
 
 
   return (
-    <> {photos.length===0 ? (<NoResults />): ( <> <Box sx={{ display: "flex", justifyContent: "center" }}>
+     <> <Box sx={{ display: "flex", justifyContent: "center" }}>
     <Box
       className="search-bar"
       sx={{ display: "flex", justifyContent: "center" }}
@@ -81,12 +81,13 @@ export default function Favorites() {
   <Box className="order-by">
     <OrderBy orderBy={orderBy} setOrderBy={setOrderBy}/>
   </Box>
-  <ImageList sx={{ margin: "0px auto 50px", width: "80%" }} gap={25}>
-    {photos.map((photo) => (
-      <Photo key={photo.id} item={photo} fav={true} />
-    ))}
-  </ImageList>
+  {photos.length===0 ? (<NoResults />) :(<ImageList sx={{ margin: "0px auto 50px", width: "80%" }} gap={25}>
+    { photos.map((photo) => (
+      <Photo key={photo.id} item={photo} fav={true} />)
+    )}
+  </ImageList>) }
+  
 </>)}
-    </>
-  );
-}
+  
+
+

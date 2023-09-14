@@ -1,25 +1,26 @@
-import { Box, ImageList, Paper, IconButton, InputBase } from "@mui/material";
 import Pagination from "@mui/material/Pagination";
-import {Photo} from "../components/Photo";
 import SearchIcon from "@mui/icons-material/Search";
-import {
-  getPhotos,
-  getPhotosStatus,
-  getTotalPages,
-} from "../features/search/searchSlice";
+import { Box, ImageList, Paper, IconButton, InputBase } from "@mui/material";
+import { Photo } from "../components/Photo";
+import { getPhotos, getPhotosStatus, getTotalPages} from "../features/search/searchSlice";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPhotos } from "../features/search/searchThunk";
+import { getFavPhotos } from "../features/favorites/favoritesSlice";
+import { NoResults } from "../components/NoResults";
+
+
 
 export default function Search() {
+  const [loadPhotos, setLoadPhotos] = useState(false);
   const [query, setQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const [photos, setPhotos] = useState([]);
+  const [favPhotos, setfavPhotos] = useState([]);
   const photosStatus = useSelector(getPhotosStatus);
   const dispatch = useDispatch();
-  const results = useSelector(getPhotos);
+  let results = useSelector(getPhotos);
   let totalPages = useSelector(getTotalPages);
-
+  let favorites = useSelector(getFavPhotos);
   const handlePageChange = (value) => {
     setCurrentPage(value);
     dispatch(fetchPhotos({ query: query, currentPage: value }));
@@ -28,26 +29,41 @@ export default function Search() {
     setCurrentPage(1);
     setQuery(e.target.value);
   };
+
   useEffect(() => {
+    setfavPhotos(favorites);
     if (photosStatus === "idle" ) {
-      dispatch(fetchPhotos({ query: query, currentPage: currentPage }));
+      dispatch(fetchPhotos({ query: '', currentPage: currentPage }));
     } else if (photosStatus === "pending") {
       console.log("pending");
     } else if (photosStatus === "fulfilled") {
       console.log('fulfilled');
-      let data = [];
-      results.map((photo) => data.push(<Photo key={photo.id} item={photo} fav={false} />));
-      setPhotos(data);
+      setLoadPhotos(true);
     } else {
       console.log("error");
     }
-  }, [dispatch, photosStatus, results, query, currentPage]);
+  }, [dispatch, photosStatus, currentPage,favorites]);
 
   useEffect(() => {
     if (query !== "") {
       dispatch(fetchPhotos({ query: query, currentPage: 1 }));
     }
   }, [dispatch, query]);
+
+  let resultFav = [];
+  if(loadPhotos){
+    resultFav = results.map((photo) => { return {...photo, favorite: false }});
+    let favPhotosId = new Set(favPhotos.map(photo => photo.id));
+    resultFav.forEach(photo => {
+        if (favPhotosId.has(photo.id)) {
+            photo.favorite = true;
+        }
+  }
+  ); 
+}
+  
+ 
+  
 
   return (
     <><Box sx={{ display: "flex", justifyContent: "center" }}>
@@ -76,9 +92,10 @@ export default function Search() {
         </Paper>
       </Box>
       </Box>
-      <ImageList sx={{ margin: "0 auto", width: "80%" }} gap={25}>
-        {photos}
-      </ImageList>
+      {loadPhotos&&<ImageList sx={{ margin: "0 auto", width: "80%" }} gap={25}>
+        {resultFav.map((photo) => <Photo key={photo.id} item={photo}/>)}
+      </ImageList>}
+      {resultFav.length ===0&&<NoResults/>}
 
       <Pagination
         count={totalPages}

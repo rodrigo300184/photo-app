@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ImageListItem from "@mui/material/ImageListItem";
 import ImageListItemBar from "@mui/material/ImageListItemBar";
 import Box from "@mui/material/Box";
@@ -12,9 +12,8 @@ import {NestedModal} from "./Modal";
 
 export const Photo = (props) => {
   const dispatch = useDispatch();
-  const [favIcon, setFavIcon] = useState();
   const [modal, setModal] = useState();
-
+  const [open, setOpen] = useState(true);
 
 
   const download = () => {
@@ -28,11 +27,9 @@ export const Photo = (props) => {
   };
 
   const handlefavorite = () => {
-    if (favIcon) {
-      setFavIcon(false);
+    if (props.item.favorite) {
       dispatch(removePhoto(props.item));
     } else {
-      setFavIcon(true);
       dispatch(addPhoto(props.item));
     }
   };
@@ -41,8 +38,9 @@ export const Photo = (props) => {
   };
 
   const handleInfo = () => {
-    setModal(<NestedModal photo={props.item} open={true} />);
+    setModal(<NestedModal photo={props.item} open={open} />);
   };
+
 
   return (
     <ImageListItem key={props.item.id}>
@@ -91,7 +89,7 @@ export const Photo = (props) => {
               </>
             ) : (
               <FavoriteIcon
-                sx={{ cursor: "pointer", color: favIcon ? "red" : "" }}
+                sx={{ cursor: "pointer", color: props.item.favorite ? "red" : "" }}
                 onClick={handlefavorite}
               />
             )}

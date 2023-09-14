@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Button from "@mui/material/Button";
@@ -23,8 +23,7 @@ const style = {
 function ChildModal(props) {
   const dispatch = useDispatch();
   const newDescription = props.newDescription;
-  console.log(newDescription);
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const handleOpen = () => {
     setOpen(true);
   };
@@ -63,8 +62,9 @@ function ChildModal(props) {
 }
 
 export const NestedModal = (props) => {
-  const [open, setOpen] = React.useState(props.open);
-  const [newDescription, setNewDescription] = React.useState(props.photo.description);
+  const [open, setOpen] = useState(props.open);
+  const [newDescription, setNewDescription] = useState(props.photo.description);
+ 
   const handleClose = () => {
     setOpen(false);
   };

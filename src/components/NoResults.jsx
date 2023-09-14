@@ -3,7 +3,9 @@ import './noResult.css';
 
 export  const NoResults = ()=> {
   return (
-   <>
+   <> <Box display="flex" justifyContent="center">
+        <h2>No hay fotos</h2>
+        </Box>
         <div className="no-result-image"></div>
         <Box display="flex" justifyContent="center">
       <p className="thanks-to">
