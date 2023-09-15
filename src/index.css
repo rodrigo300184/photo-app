@@ -67,7 +67,9 @@ ul {
 .MuiFormControl-root.css-kfvvmi-MuiFormControl-root {
   margin-left: 0;
 }
-
+.MuiFormControl-root.css-18s6xvc{
+  margin-left: 0;
+}
 
 @media (min-width: 600px) {
   ul {

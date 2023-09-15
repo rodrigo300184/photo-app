@@ -80,7 +80,7 @@ export default function NestedModal(props) {
 
   return (
     <div>
-      <Button onClick={handleOpen}>{<InfoIcon />}</Button>
+      <InfoIcon sx={{paddingTop:'4px',marginRight:'2px'}} onClick={handleOpen} />
       <Modal
         open={open}
         onClose={handleClose}
