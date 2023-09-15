@@ -21,6 +21,8 @@ root.render(
           <Route path="/" element={<App />} />
           <Route path="/search" element={<Search />} />
           <Route path="/favorites" element={<Favorites />} />
+          <Route path='/photo-app' element={<Home />} />
+          <Route path='*' element={<Home />} />
         </Routes>
         <Footer/>
       </BrowserRouter>
