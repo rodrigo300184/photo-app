@@ -1,4 +1,4 @@
-# Oxygen Academy Photo App
+# Photo App
 
 Esta aplicación web fue desarrollada utilizando React y diversas tecnologías relacionadas. Antes de sumergirnos en la implementación, tuve que seguir un conjunto estructurado de pasos y consideraciones para asegurar un proceso de desarrollo fluido y eficiente.
 
