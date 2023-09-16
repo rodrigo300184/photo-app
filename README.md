@@ -2,7 +2,7 @@
 
 Esta aplicación web fue desarrollada utilizando React y diversas tecnologías relacionadas. Antes de sumergirnos en la implementación, tuve que seguir un conjunto estructurado de pasos y consideraciones para asegurar un proceso de desarrollo fluido y eficiente.
 
-**Enlace a la aplicación en GitHub Pages: [Enlace](https://rodrigo300184.github.io/photo-app/)**
+**Enlace a la aplicación: [Enlace](http://rodrigo300184-photo-app-bucket2.s3-website.eu-west-3.amazonaws.com/)**
 
 ## Tabla de Contenidos
 
@@ -100,7 +100,7 @@ Para obtener más información sobre cómo desplegar la aplicación, consulta la
 
 This web application was developed using React and various related technologies. Before diving into the implementation, I followed a structured set of steps and considerations to ensure a smooth and efficient development process.
 
-**Link to the application on GitHub Pages: [Link](https://rodrigo300184.github.io/photo-app/)**
+**Link to the application: [Link](http://rodrigo300184-photo-app-bucket2.s3-website.eu-west-3.amazonaws.com/)**
 
 ## Table of Contents
 
