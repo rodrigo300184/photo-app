@@ -111,10 +111,10 @@ This web application was developed using React and various related technologies.
 **Link to the application: [Link](http://rodrigo300184-photo-app-bucket2.s3-website.eu-west-3.amazonaws.com/)**
 <br>
 <div style="display: flex; justify-content: space-between;">
-  <img src="https://github.com/rodrigo300184/photo-app/blob/19e2760a945f605476e91edfa5ce49528b79d995/public/1.png" alt="Preview 1" width="200">
-  <img src="https://github.com/rodrigo300184/photo-app/blob/19e2760a945f605476e91edfa5ce49528b79d995/public/2.png" alt="Preview 2" width="200">
-  <img src="https://github.com/rodrigo300184/photo-app/blob/19e2760a945f605476e91edfa5ce49528b79d995/public/3.png" alt="Preview 3" width="200">
-  <img src="https://github.com/rodrigo300184/photo-app/blob/19e2760a945f605476e91edfa5ce49528b79d995/public/4.png" alt="Preview 4" width="200">
+  <img src="https://github.com/rodrigo300184/photo-app/blob/19e2760a945f605476e91edfa5ce49528b79d995/public/1.png" alt="Preview 1" width="400">
+  <img src="https://github.com/rodrigo300184/photo-app/blob/19e2760a945f605476e91edfa5ce49528b79d995/public/2.png" alt="Preview 2" width="400">
+  <img src="https://github.com/rodrigo300184/photo-app/blob/19e2760a945f605476e91edfa5ce49528b79d995/public/3.png" alt="Preview 3" width="400">
+  <img src="https://github.com/rodrigo300184/photo-app/blob/19e2760a945f605476e91edfa5ce49528b79d995/public/4.png" alt="Preview 4" width="400">
 </div>
 <br>
 ## Table of Contents
