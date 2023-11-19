@@ -3,6 +3,14 @@
 Esta aplicación web fue desarrollada utilizando React y diversas tecnologías relacionadas. Antes de sumergirnos en la implementación, tuve que seguir un conjunto estructurado de pasos y consideraciones para asegurar un proceso de desarrollo fluido y eficiente.
 
 **Enlace a la aplicación: [Enlace](http://rodrigo300184-photo-app-bucket2.s3-website.eu-west-3.amazonaws.com/)**
+<br>
+<div style="display: flex; justify-content: space-between;">
+  <img src="https://github.com/rodrigo300184/photo-app/blob/19e2760a945f605476e91edfa5ce49528b79d995/public/1.png" alt="Preview 1" width="200">
+  <img src="https://github.com/rodrigo300184/photo-app/blob/19e2760a945f605476e91edfa5ce49528b79d995/public/2.png" alt="Preview 2" width="200">
+  <img src="https://github.com/rodrigo300184/photo-app/blob/19e2760a945f605476e91edfa5ce49528b79d995/public/3.png" alt="Preview 3" width="200">
+  <img src="https://github.com/rodrigo300184/photo-app/blob/19e2760a945f605476e91edfa5ce49528b79d995/public/4.png" alt="Preview 4" width="200">
+</div>
+<br>
 
 ## Tabla de Contenidos
 
@@ -101,7 +109,14 @@ Para obtener más información sobre cómo desplegar la aplicación, consulta la
 This web application was developed using React and various related technologies. Before diving into the implementation, I followed a structured set of steps and considerations to ensure a smooth and efficient development process.
 
 **Link to the application: [Link](http://rodrigo300184-photo-app-bucket2.s3-website.eu-west-3.amazonaws.com/)**
-
+<br>
+<div style="display: flex; justify-content: space-between;">
+  <img src="https://github.com/rodrigo300184/photo-app/blob/19e2760a945f605476e91edfa5ce49528b79d995/public/1.png" alt="Preview 1" width="200">
+  <img src="https://github.com/rodrigo300184/photo-app/blob/19e2760a945f605476e91edfa5ce49528b79d995/public/2.png" alt="Preview 2" width="200">
+  <img src="https://github.com/rodrigo300184/photo-app/blob/19e2760a945f605476e91edfa5ce49528b79d995/public/3.png" alt="Preview 3" width="200">
+  <img src="https://github.com/rodrigo300184/photo-app/blob/19e2760a945f605476e91edfa5ce49528b79d995/public/4.png" alt="Preview 4" width="200">
+</div>
+<br>
 ## Table of Contents
 
 1. [Designing the App in Figma Before Writing Code](#1-designing-the-app-in-figma-before-writing-code)
