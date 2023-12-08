@@ -27,9 +27,15 @@ export default function Search() {
     setCurrentPage(value);
     dispatch(fetchPhotos({ query: query, currentPage: value }));
   };
+  let searchTimer;
   const handleWhileSearching = (e) => {
     setCurrentPage(1);
-    setQuery(e.target.value);
+    if (searchTimer) {
+      clearTimeout(searchTimer);
+    }
+    searchTimer = setTimeout(() => {
+      setQuery(e.target.value);
+    }, 400);
   };
 
   useEffect(() => {
@@ -37,7 +43,6 @@ export default function Search() {
     if (photosStatus === "idle") {
       dispatch(fetchPhotos({ query: "", currentPage: currentPage }));
     } else if (photosStatus === "pending") {
-      console.log("pending");
     } else if (photosStatus === "fulfilled") {
       setLoadPhotos(true);
     } else {
@@ -86,8 +91,11 @@ export default function Search() {
               placeholder="Search your photos"
               inputProps={{ "aria-label": "Search your photos" }}
               onChange={handleWhileSearching}
-              onKeyDown={(e) =>  {if (e.key === "Enter") {
-                e.preventDefault();}}}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  e.preventDefault();
+                }
+              }}
               autoComplete="on"
             />
             <IconButton type="button" sx={{ p: "10px" }} aria-label="search">

@@ -38,7 +38,7 @@ export const Footer = ()=>{
             
             <Link
               sx={{ paddingTop: "1.3px"}}
-              href='https://www.linkedin.com/in/rodrigo-mart%C3%ADnez-ba633993/'
+              href='https://www.linkedin.com/in/rodrigo-martinez-ba633993/'
               target='_blank'
             >
               <FaLinkedin fontSize='25px' color="black"  />
