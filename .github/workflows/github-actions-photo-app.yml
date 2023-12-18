@@ -16,10 +16,11 @@ jobs:
         run: npm run build
         env:
           CI: false
+          REACT_APP_UNSPLASH_API_KEY: ${{ secrets.REACT_APP_UNSPLASH_API_KEY }}
       - name: Make envfile
         uses: SpicyPizza/create-envfile@v2.0
         with:
-          envkey_REACT_APP_UNSPLASH_API_KEY: ${{ secrets.REACT_APP_UNSPLASH_API_KEY }}
+          REACT_APP_UNSPLASH_API_KEY: ${{ secrets.REACT_APP_UNSPLASH_API_KEY }}
           file_name: .env.local
       - uses: jakejarvis/s3-sync-action@master
         with:
