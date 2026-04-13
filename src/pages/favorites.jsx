@@ -51,7 +51,7 @@ export default function Favorites() {
         break;
     }
     setPhotos(orderedPhotos);
-  }, [query, orderBy, favPhotos]);
+  }, [query, orderBy, favPhotos, photos]);
 
   return (
     <>

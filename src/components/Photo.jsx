@@ -11,10 +11,12 @@ import { saveAs } from "file-saver";
 import NestedModal from "./NestedModal";
 import Swal from "sweetalert2";
 import { PhotoModal } from "./PhotoModal";
+import { PhotoSkeleton } from "./PhotoSkeleton";
 
 export const Photo = (props) => {
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false)
+  const [loaded, setLoaded] = useState(false)
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
   const download = () => {
@@ -51,15 +53,33 @@ export const Photo = (props) => {
   };
 
   return (
-    <ImageListItem key={props.item.id}>
-      <img
-        src={`${props.item.urls.thumb}?w=248&fit=crop&auto=format&h=300`}
-        alt={props.item.alt_description}
-        loading="lazy"
-        id={props.item.id}
-        onClick={handleOpen}
-      />
-      <ImageListItemBar
+    <ImageListItem key={props.item.id} sx={{ position: 'relative' }}>
+      <Box sx={{ position: 'relative', width: '100%', height: '300px' }}>
+        {!loaded && (
+          <Box sx={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 1 }}>
+            <PhotoSkeleton />
+          </Box>
+        )}
+        <img
+          src={`${props.item.urls.thumb}?w=248&fit=crop&auto=format&h=300`}
+          alt={props.item.alt_description}
+          loading="lazy"
+          id={props.item.id}
+          onClick={handleOpen}
+          onLoad={() => setLoaded(true)}
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            opacity: loaded ? 1 : 0,
+            transition: 'opacity 0.3s',
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover'
+          }}
+        />
+      </Box>
+      {loaded && <ImageListItemBar
         sx={{ overflow: "visible" }}
         title={
           props.item.description !== null
@@ -105,8 +125,8 @@ export const Photo = (props) => {
             )}
           </Box>
         }
-      />
-      <PhotoModal isOpen={open} item={props.item} handleClose={handleClose} />
+      />}
+      {loaded && <PhotoModal isOpen={open} item={props.item} handleClose={handleClose} />}
     </ImageListItem>
   );
 };
