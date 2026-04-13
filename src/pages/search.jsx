@@ -1,6 +1,6 @@
 import Pagination from "@mui/material/Pagination";
 import SearchIcon from "@mui/icons-material/Search";
-import { Box, ImageList, Paper, IconButton, InputBase } from "@mui/material";
+import { Box, ImageList, Paper, IconButton, InputBase, CircularProgress } from "@mui/material";
 import { Photo } from "../components/Photo";
 import {
   getPhotos,
@@ -104,14 +104,19 @@ export default function Search() {
           </Paper>
         </Box>
       </Box>
-      {loadPhotos && (
+      {!loadPhotos && photosStatus === "pending" && (
+        <Box sx={{ display: "flex", justifyContent: "center", marginTop: "50px" }}>
+          <CircularProgress />
+        </Box>
+      )}
+      {loadPhotos && resultFav.length > 0 && (
         <ImageList sx={{ margin: "0 auto", width: "80%" }} gap={25}>
           {resultFav.map((photo) => (
             <Photo key={photo.id} item={photo} />
           ))}
         </ImageList>
       )}
-      {resultFav.length === 0 && <NoResults />}
+      {loadPhotos && resultFav.length === 0 && <NoResults />}
 
       <Pagination
         count={totalPages}
